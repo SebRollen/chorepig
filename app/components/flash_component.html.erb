@@ -1,0 +1,53 @@
+<div
+    class="max-w-sm w-full bg-gray-50 shadow-lg rounded-lg pointer-events-auto hidden"
+    data-controller="flash"
+    data-turbo-cache="false"
+    data-flash-action-method="<%= @data.dig(:action, :method) %>"
+    data-flash-timeout="<%= @data[:timeout] %>"
+    data-transition-enter-active="transform ease-out duration-300 transition"
+    data-transition-enter-from="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
+    data-transition-enter-to="translate-y-0 opacity-100 sm:translate-x-0"
+    data-transition-leave-active="transition ease-in duration-100"
+    data-transition-leave-from="opacity-100"
+    data-transition-leave-to="opacity-0">
+  <div class="rounded-lg shadow-xs overflow-hidden">
+    <div class="p-4">
+      <div class="flex items-start">
+        <div class="flex-shrink-0">
+          <div class="h-6 w-6 <%= @icon_color %>">
+            <%= @icon %>
+          </div>
+        </div>
+        <div class="ml-3 w-0 flex-1 pt-0.5">
+          <p class="text-sm leading-5 font-medium text-gray-800">
+          <%= @data[:title] %>
+          </p>
+          <% if @data[:body].present? %>
+            <p class="mt-1 text-sm leading-5 text-gray-600">
+            <%= @data[:body] %>
+            </p>
+          <% end %>
+          <% if @data[:action].present? %>
+            <div class="mt-2" data-target="flash.buttons">
+              <a <% if @data.dig(:action, :method) == 'get' %> href="<%= @data.dig(:action, :url) %>" <% else %> href="#" data-action="flash#run" <% end %> class="text-sm leading-5 font-medium text-yellow-400 hover:text-yellow-400 focus:outline-none focus:underline transition ease-in-out duration-150">
+                <%= @data.dig(:action, :name) %>
+              </a>
+              <button data-action="flash#close" class="ml-6 text-sm leading-5 font-medium text-gray-400 hover:text-gray-500 focus:outline-none focus:underline transition ease-in-out duration-150">
+                Dismiss
+              </button>
+            </div>
+
+          <% end %>
+        </div>
+        <div class="ml-4 flex-shrink-0 flex">
+          <button type="button" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-2" data-action="flash#close">
+            <%= heroicon 'x-mark', variant: :solid, options: { class: 'h-5 w-5' } %>
+          </button>
+        </div>
+      </div>
+    </div>
+    <% if @data[:countdown] %>
+      <div class="bg-yellow-400 rounded-lg h-1 w-0" data-target="flash.countdown"></div>
+    <% end %>
+  </div>
+</div>

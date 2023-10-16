@@ -1,0 +1,13 @@
+<footer class="flex-shrink-0 border-t border-pink-100">
+  <div class="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
+    <div class="text-xs sm:text-sm leading-5 text-gray-600 flex justify-center space-x-6 md:order-2">
+      <%= link_to 'About', page_path('about') %>
+      <%= link_to 'Terms', page_path('terms-of-service') %>
+      <%= link_to 'Privacy Policy', page_path('privacy-policy') %>
+      <%= mail_to 'seb@chorepig.com', 'Email the Head Hog' %>
+    </div>
+    <div class="mt-8 md:order-1 md:mt-0">
+      <p class="text-center text-xs leading-5 text-gray-500">&copy; 2023 RoQR, LLC. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

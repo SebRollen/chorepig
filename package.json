@@ -1,0 +1,36 @@
+{
+  "name": "chorepig",
+  "private": "true",
+  "dependencies": {
+    "@dnd-kit/core": "^6.0.8",
+    "@dnd-kit/modifiers": "^6.0.1",
+    "@dnd-kit/sortable": "^7.0.2",
+    "@formkit/auto-animate": "^0.7.0",
+    "@headlessui/react": "^1.7.15",
+    "@hotwired/stimulus": "^3.2.1",
+    "@hotwired/turbo-rails": "^7.3.0",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/typography": "^0.5.9",
+    "autoprefixer": "^10.4.14",
+    "axios": "^1.4.0",
+    "dexie": "^3.2.4",
+    "dexie-react-hooks": "^1.1.6",
+    "el-transition": "^0.0.7",
+    "esbuild": "^0.17.19",
+    "postcss": "^8.4.24",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "stimulus-use": "^0.52.0",
+    "tailwindcss": "^3.3.2",
+    "uuid": "^9.0.0",
+    "workbox-build": "^7.0.0"
+  },
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
+    "build:workbox": "workbox injectManifest workbox-config.js"
+  },
+  "packageManager": "yarn@1.22.19"
+}
